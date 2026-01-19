@@ -1,6 +1,8 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const Item = require('../models/Item');
+import Item from '../models/Item.js';
+
+
 
 // Create Item
 router.post('/', async (req, res) => {
@@ -13,7 +15,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get All Items
-router.get('/', async (req, res) => {
+router.get('/', async (_, res) => {
     const items = await Item.find();
     res.json(items);
 });
@@ -27,4 +29,4 @@ router.get('/:id', async (req, res) => {
     res.json(item);
 });
 
-module.exports = router;
+export default router;
